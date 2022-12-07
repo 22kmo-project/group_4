@@ -30,6 +30,13 @@ const student = {
                 callback
             );
         });
+    },
+    checkPassword: function(id_student,callback){
+        return db.query(
+            'select password from student where id_student=?',
+            [id_student],
+            callback
+        )
     }
 };
 module.exports = student;
