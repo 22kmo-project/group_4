@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2022-11-29T18:20:04
+# Project created by QtCreator 2022-12-05T12:40:04
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = frontend
+TARGET = BAnk
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
