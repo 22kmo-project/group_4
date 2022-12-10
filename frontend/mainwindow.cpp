@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -193,5 +194,53 @@ void MainWindow::on_lineEdit_editingFinished()
 void MainWindow::on_btnTransactions_clicked()
 {
     ui->listTransactions->show();
+
+}
+
+void MainWindow::on_loginButton_clicked()
+{
+    QString cardId = ui->UsernameInput->text();
+    QString pin = ui->PasswordInput->text();
+
+    //qDebug()<<cardId + " " + pin;
+
+    QJsonObject jsonObj;
+    jsonObj.insert("cardId", cardId);
+    jsonObj.insert("pin", pin);
+
+    QString site_url = "http://localhost:3000/login";
+    QNetworkRequest request((site_url));
+
+    //WEBTOKEN MUIHIN APIKUTSUIHIN
+    //QByteArray myToken = "Bearer " + webToken
+    //request.setRawHeader(QByteArray("Authorization"),(myToken));
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    loginManager = new QNetworkAccessManager(this);
+    connect(loginManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+
+    reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
+}
+
+void MainWindow::loginSlot(QNetworkReply *reply)
+{
+    response_data = reply->readAll();
+    qDebug()<<response_data;
+
+    int loginTest = QString::compare(response_data, "false");
+    if(loginTest == -1){
+        qDebug()<<"Logged in";
+        this->setWebToken(response_data);
+    } else {
+        qDebug()<<"Invalid login details";
+    }
+
+}
+
+void MainWindow::setWebToken(const QByteArray &value)
+{
+    webToken = "Bearer " + value;
+    qDebug()<<webToken;
 
 }

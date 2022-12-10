@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 namespace Ui {
 class MainWindow;
@@ -43,8 +46,18 @@ private slots:
 
     void on_btnTransactions_clicked();
 
+    void on_loginButton_clicked();
+
+    void loginSlot(QNetworkReply *reply);
+
+    void setWebToken(const QByteArray &value);
+
 private:
     Ui::MainWindow *ui;
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QByteArray webToken;
 };
 
 #endif // MAINWINDOW_H
