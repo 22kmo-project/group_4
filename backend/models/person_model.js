@@ -19,7 +19,7 @@ const person = {
     },
     update: function(id, update_data, callback){
         return db.query(
-            'update person set firstname=? lastname=? where personId=?',
+            'update person set firstname=?, lastname=? where personId=?',
             [update_data.firstname, update_data.lastname, id],
             callback
         );
