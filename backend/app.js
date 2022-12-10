@@ -8,6 +8,9 @@ var usersRouter = require('./routes/users');
 var cardRouter = require('./routes/card');
 var logRouter = require('./routes/log');
 var accountRouter = require('./routes/account');
+var personRouter = require('./routes/person');
+var accountPermissionsRouter = require('./routes/accountPermissions');
+var cardPermissionsRouter = require('./routes/cardPermissions');
 
 var app = express();
 
@@ -22,6 +25,10 @@ app.use('/users', usersRouter);
 app.use('/card', cardRouter);
 app.use('/log', logRouter);
 app.use('/account', accountRouter);
+app.use('/person', personRouter);
+app.use('/accountPermissions', accountPermissionsRouter);
+app.use('/cardPermissions', cardPermissionsRouter);
+
 
 
 module.exports = app;
