@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1820</width>
-    <height>1037</height>
+    <width>1084</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -239,7 +239,7 @@
      <widget class="QPushButton" name="btnBack">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>121</x>
         <y>210</y>
         <width>91</width>
         <height>41</height>
@@ -254,12 +254,30 @@
        <string>Back</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QPushButton" name="btnConfirm">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>40</y>
+        <x>220</x>
+        <y>210</y>
         <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>OK</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="drawAmount">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>191</width>
         <height>31</height>
        </rect>
       </property>
@@ -268,7 +286,24 @@
         <pointsize>12</pointsize>
        </font>
       </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
+     <zorder>draw20</zorder>
+     <zorder>draw40</zorder>
+     <zorder>draw50</zorder>
+     <zorder>draw80</zorder>
+     <zorder>draw100</zorder>
+     <zorder>draw200</zorder>
+     <zorder>btnBack</zorder>
+     <zorder>btnConfirm</zorder>
+     <zorder>Transactions</zorder>
+     <zorder>Transactions</zorder>
+     <zorder>Transactions</zorder>
+     <zorder>Transactions</zorder>
+     <zorder>drawAmount</zorder>
+     <zorder>LogIn</zorder>
     </widget>
     <widget class="QWidget" name="Options" native="true">
      <property name="geometry">
@@ -352,23 +387,69 @@
       </property>
      </widget>
     </widget>
-    <widget class="QListWidget" name="listTransactions">
+    <widget class="QWidget" name="Transactions" native="true">
      <property name="geometry">
       <rect>
-       <x>775</x>
-       <y>60</y>
-       <width>256</width>
-       <height>371</height>
+       <x>250</x>
+       <y>70</y>
+       <width>401</width>
+       <height>401</height>
       </rect>
+     </property>
+     <widget class="QListWidget" name="listTransactions">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>30</y>
+        <width>256</width>
+        <height>371</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_back_transactions">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="helloText">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>60</y>
+       <width>351</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
    <widget class="QWidget" name="LogIn" native="true">
     <property name="geometry">
      <rect>
-      <x>1110</x>
-      <y>160</y>
-      <width>321</width>
+      <x>350</x>
+      <y>110</y>
+      <width>320</width>
       <height>291</height>
      </rect>
     </property>
@@ -459,16 +540,6 @@
      </property>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1820</width>
-     <height>20</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

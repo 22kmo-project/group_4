@@ -23,6 +23,9 @@ const log = {
             [update_data.date, update_data.personId, update_data.accountId, update_data.cardId, update_data.amount, id],
             callback
         );
+    },
+    getByAccountId: function(id, callback){
+        return db.query('select * from log where accountId=?', [id], callback);
     }
 };
 module.exports = log;
