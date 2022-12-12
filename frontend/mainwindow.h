@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +17,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+
+    void setPageNumber(int value);
+
 private slots:
     void on_btnCheckBalance_clicked();
 
@@ -39,12 +46,59 @@ private slots:
 
     void on_btnLogOut_clicked();
 
-    void on_lineEdit_editingFinished();
+//    void on_lineEdit_editingFinished();
 
     void on_btnTransactions_clicked();
 
+    void on_loginButton_clicked();
+
+    void loginSlot(QNetworkReply *reply);
+
+    void setWebToken(const QByteArray &value);
+
+    QByteArray getWebToken() const;
+
+    void on_btn_back_transactions_clicked();
+
+    void getCardDetails();
+    void cardSlot(QNetworkReply *reply);
+
+    void getPerson(QString personId);
+    void personSlot(QNetworkReply *reply);
+
+    void getCardAccounts();
+    void accountSlot(QNetworkReply *reply);
+
+    void on_btnConfirm_clicked();
+
+    void getBalance();
+    void balanceSlot(QNetworkReply *reply);
+
+    void updateBalance(int updatedAmount);
+    void updateBalanceSlot(QNetworkReply *reply);
+
+    void addLog();
+    void addLogSlot(QNetworkReply *reply);
+
+    void getLogs();
+    void getLogsSlot(QNetworkReply *reply);
+
+
 private:
     Ui::MainWindow *ui;
+    QNetworkAccessManager *loginManager;
+    QNetworkAccessManager *cardManager;
+    QNetworkAccessManager *personManager;
+    QNetworkAccessManager *accountManager;
+    QNetworkAccessManager *balanceManager;
+
+    QNetworkAccessManager *addLogManager;
+    QNetworkAccessManager *getLogManager;
+
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QByteArray webToken;
+    int pageNumber = 0;
 };
 
 #endif // MAINWINDOW_H

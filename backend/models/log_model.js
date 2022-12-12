@@ -19,10 +19,13 @@ const log = {
     },
     update: function(id, update_data, callback){
         return db.query(
-            'update log set date=? personId=?, accountId=?, cardId=?, amount=? where logId=?',
+            'update log set date=?, personId=?, accountId=?, cardId=?, amount=? where logId=?',
             [update_data.date, update_data.personId, update_data.accountId, update_data.cardId, update_data.amount, id],
             callback
         );
+    },
+    getByAccountId: function(id, callback){
+        return db.query('select * from log where accountId=?', [id], callback);
     }
 };
 module.exports = log;

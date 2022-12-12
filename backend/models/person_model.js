@@ -9,8 +9,8 @@ const person = {
     },
     add: function(add_data, callback){
         return db.query(
-            'insert into person (firstname,lastname) values(?,?)',
-            [add_data.firstname, add_data.lastname],
+            'insert into person (personId,firstname,lastname) values(?,?,?)',
+            [add_data.personId, add_data.firstname, add_data.lastname],
             callback
         );
     },
@@ -19,7 +19,7 @@ const person = {
     },
     update: function(id, update_data, callback){
         return db.query(
-            'update person set firstname=? lastname=? where personId=?',
+            'update person set firstname=?, lastname=? where personId=?',
             [update_data.firstname, update_data.lastname, id],
             callback
         );

@@ -19,7 +19,7 @@ const accountPermissions = {
     },
     update: function(id, update_data, callback){
         return db.query(
-            'update accountPermissions set accountId=? personId=? where permissionId=?',
+            'update accountPermissions set accountId=?, personId=? where permissionId=?',
             [update_data.accountId, update_data.personId, id],
             callback
         );

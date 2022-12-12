@@ -61,4 +61,26 @@ function(request, response) {
   });
 });
 
+router.put('/transaction/:id', 
+function(request, response) {
+    account.updateBalance(request.params.id, request.body, function(err, dbResult) {
+    if (err) {
+      response.json(err);
+    } else {
+      response.json(dbResult);
+    }
+  });
+});
+
+router.get('/card/:id',
+function(request,response) {
+  account.getByCardId(request.params.id, function (err, dbResult) {
+    if (err) {
+        response.json(err);
+    } else {
+        response.json(dbResult);
+    }
+  })
+});
+
 module.exports = router;
